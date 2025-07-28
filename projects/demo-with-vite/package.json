@@ -1,0 +1,41 @@
+{
+  "name": "demo-with-vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "gen-stats": "pnpx tsx ./script/gen-stats.ts",
+    "source-map-explorer": "source-map-explorer",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest",
+    "update": "pnpm up @fneco/node-util --latest"
+  },
+  "dependencies": {
+    "@ts-validator-adapter/ajv": "workspace:*",
+    "@ts-validator-adapter/arktype": "workspace:*",
+    "@ts-validator-adapter/periphery": "workspace:*",
+    "@ts-validator-adapter/typebox": "workspace:*",
+    "@ts-validator-adapter/valibot": "workspace:*",
+    "@ts-validator-adapter/zod": "workspace:*",
+    "@ts-validator-adapter/zod-mini": "workspace:*",
+    "memoize-one": "6.0.0"
+  },
+  "devDependencies": {
+    "@fneco/node-util": "latest",
+    "@types/js-yaml": "4.0.9",
+    "js-yaml": "4.1.0",
+    "remeda": "2.22.5",
+    "rollup-plugin-analyzer": "4.0.0",
+    "rollup-plugin-visualizer": "6.0.1",
+    "source-map-explorer": "2.5.3",
+    "typescript": "~5.8.3",
+    "vite": "6.3.5",
+    "vite-tsconfig-paths": "5.1.4",
+    "vitest": "3.1.2",
+    "zx": "8.5.4"
+  }
+}

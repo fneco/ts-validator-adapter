@@ -1,0 +1,42 @@
+---
+import { packageInfo } from "@ts-validator-adapter/periphery/constant/package-info";
+import AnalyzeCards from "./_components/AnalyzeCards.astro";
+import Layout from "./_layouts/Layout.astro";
+
+const title = "TypeScript Validator Analysis";
+
+const reports = packageInfo.map((info) => {
+  return {
+    name: info.name,
+    file: `${info.shortName}.html`,
+    homepage: info.homepage,
+  };
+});
+---
+
+<Layout title={title}>
+  <h1 class="flex items-center gap-5 mb-4">
+    <img src="/favicon.svg" alt={title} class="w-10 h-10" />
+    {title}
+  </h1>
+  <p>
+    Bundle analysis comparison for TypeScript validation libraries. Each card
+    shows <a
+      href="https://rollup-plugin-analyzer.doesdev.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-gray-600 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors duration-200"
+      >rollup-plugin-analyzer</a
+    > output. Click any card to view the interactive visualization report generated
+    by
+    <a
+      href="https://github.com/btd/rollup-plugin-visualizer"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="text-gray-600 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors duration-200"
+      >rollup-plugin-visualizer</a
+    >.
+  </p>
+
+  <AnalyzeCards reports={reports} />
+</Layout>

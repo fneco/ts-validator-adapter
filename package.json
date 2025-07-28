@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "scripts": {
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r --if-present test",
+    "gen-stats": "pnpm --filter demo-with-vite gen-stats",
+    "copy-gen": "pnpm --filter stats-view copy-gen",
+    "update-gen": "pnpm gen-stats && pnpm copy-gen"
+  }
+}

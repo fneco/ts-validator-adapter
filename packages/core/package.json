@@ -1,0 +1,16 @@
+{
+  "name": "@ts-validator-adapter/core",
+  "description": "",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "typescript": "5.6.2"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}

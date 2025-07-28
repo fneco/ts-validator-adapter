@@ -1,0 +1,65 @@
+---
+import { tv } from "tailwind-variants";
+
+export interface Props {
+  name: string;
+  file: string;
+  preview?: string;
+  homepage?: string;
+}
+
+const { name, file, preview, homepage } = Astro.props;
+
+const style = tv({
+  slots: {
+    root: [
+      "block p-6",
+      "bg-white dark:bg-gray-800",
+      "border border-gray-200 dark:border-gray-700 rounded-lg",
+      "text-center no-underline text-inherit",
+      "transition-all duration-200",
+      "hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5",
+    ],
+    name: [
+      "text-xl font-bold mb-2 text-gray-800 dark:text-white",
+      "hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200",
+      "cursor-pointer underline decoration-transparent hover:decoration-current",
+    ],
+    analyzedTextContainer: [
+      // "border border-gray-200",
+      "dark:bg-gray-800  dark:border-gray-700",
+      "mt-4 rounded overflow-hidden",
+    ],
+    analyzedText: [
+      "text-gray-500 dark:text-gray-300",
+      "m-0 p-3 font-mono text-xs leading-relaxed whitespace-pre-wrap overflow-auto text-left",
+    ],
+  },
+})();
+---
+
+<div class={style.root()}>
+  {
+    homepage ? (
+      <a
+        href={homepage}
+        target="_blank"
+        rel="noopener noreferrer"
+        class={style.name()}
+      >
+        {name}
+      </a>
+    ) : (
+      <div class={style.name()}>{name}</div>
+    )
+  }
+  {
+    preview && (
+      <a href={`/stats/${file}`} class="block no-underline">
+        <div class={style.analyzedTextContainer()}>
+          <pre class={style.analyzedText()}>{preview}</pre>
+        </div>
+      </a>
+    )
+  }
+</div>

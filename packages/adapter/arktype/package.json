@@ -1,0 +1,27 @@
+{
+  "name": "@ts-validator-adapter/arktype",
+  "customFields": {
+    "target": {
+      "name": "ArkType",
+      "homepage": "https://arktype.dev/"
+    }
+  },
+  "description": "",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "arktype": "2.1.20"
+  },
+  "devDependencies": {
+    "@ts-validator-adapter/core": "workspace:*",
+    "typescript": "5.6.2",
+    "vitest": "3.1.2"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}

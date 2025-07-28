@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+/* https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --pattern-fg: color-mix(in oklab, oklch(13% 0.028 261.692) 5%, transparent);
+}
+
+@layer base {
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: semibold;
+  }
+
+  a {
+    color: theme("colors.blue.600");
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,26 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+properties:
+  addresses:
+    items:
+      properties:
+        address:
+          type: string
+        isPrimary:
+          type: boolean
+      required:
+        - address
+      type: object
+    type: array
+  email:
+    format: email
+    pattern: ^[\w%+.-]+@[\d.A-Za-z-]+\.[A-Za-z]{2,}$
+    type: string
+  password:
+    actual: $ark.actual
+    minLength: 8
+    type: string
+required:
+  - addresses
+  - email
+  - password
+type: object

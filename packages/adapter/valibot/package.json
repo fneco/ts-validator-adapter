@@ -1,0 +1,28 @@
+{
+  "name": "@ts-validator-adapter/valibot",
+  "customFields": {
+    "target": {
+      "name": "Valibot",
+      "homepage": "https://valibot.dev/"
+    }
+  },
+  "description": "",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "typescript": "5.6.2",
+    "vitest": "3.1.2"
+  },
+  "dependencies": {
+    "@ts-validator-adapter/core": "workspace:*",
+    "@valibot/to-json-schema": "1.2.0",
+    "valibot": "1.1.0"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}

@@ -1,0 +1,1 @@
+export { getAdaptersInfo } from "./getAdaptersInfo";

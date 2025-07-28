@@ -1,0 +1,43 @@
+---
+import { tv } from "tailwind-variants";
+import { getFilePreview } from "../_utils.ts";
+import AnalyzeCard from "./AnalyzeCard.astro";
+
+export interface Props {
+  reports: Array<{ name: string; file: string; homepage?: string }>;
+}
+
+const { reports } = Astro.props;
+
+const reportsWithPreview = reports.map((report) => ({
+  ...report,
+  preview: getFilePreview(report.file.replace(".html", "-report.txt"), 4, 7),
+}));
+
+const { root, innerContainer } = tv({
+  slots: {
+    root: ["mt-6 sm:mt-8", "flex flex-col items-center"],
+    innerContainer: [
+      "max-md:max-w-md w-full",
+      "auto-rows-auto",
+      "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
+      "gap-6",
+    ],
+  },
+})();
+---
+
+<div class={root()}>
+  <div class={innerContainer()}>
+    {
+      reportsWithPreview.map((report) => (
+        <AnalyzeCard
+          name={report.name}
+          file={report.file}
+          preview={report.preview}
+          homepage={report.homepage}
+        />
+      ))
+    }
+  </div>
+</div>

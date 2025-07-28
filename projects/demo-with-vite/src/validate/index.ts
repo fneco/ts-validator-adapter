@@ -1,0 +1,1 @@
+export { validateSignup } from "./zod-mini.ts";

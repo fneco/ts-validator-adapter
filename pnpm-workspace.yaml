@@ -1,0 +1,7 @@
+packages:
+  - projects/*
+  - packages/adapter/*
+  - packages/*
+ignoredBuiltDependencies:
+  - '@tailwindcss/oxide'
+  - esbuild
