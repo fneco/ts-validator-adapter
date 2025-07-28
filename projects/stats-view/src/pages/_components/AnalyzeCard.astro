@@ -1,5 +1,6 @@
 ---
 import { tv } from "tailwind-variants";
+import { asset } from "../_utils.ts";
 
 export interface Props {
   name: string;
@@ -55,7 +56,7 @@ const style = tv({
   }
   {
     preview && (
-      <a href={`/stats/${file}`} class="block no-underline">
+      <a href={asset(`/stats/${file}`)} class="block no-underline">
         <div class={style.analyzedTextContainer()}>
           <pre class={style.analyzedText()}>{preview}</pre>
         </div>

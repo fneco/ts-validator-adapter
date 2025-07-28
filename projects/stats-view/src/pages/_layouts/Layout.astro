@@ -2,6 +2,7 @@
 import { tv } from "tailwind-variants";
 import "../../global.css";
 import themeInitScript from "../../scripts/theme-init.js?raw";
+import { asset } from "../_utils.ts";
 import ThemeToggle from "./_components/ThemeToggle.astro";
 
 export interface Props {
@@ -34,7 +35,7 @@ const { body, main } = tv({
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={asset("/favicon.svg")} />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>

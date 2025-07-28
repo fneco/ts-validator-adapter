@@ -2,6 +2,7 @@
 import { packageInfo } from "@ts-validator-adapter/periphery/constant/package-info";
 import AnalyzeCards from "./_components/AnalyzeCards.astro";
 import Layout from "./_layouts/Layout.astro";
+import { asset } from "./_utils.ts";
 
 const title = "TypeScript Validator Analysis";
 
@@ -16,7 +17,7 @@ const reports = packageInfo.map((info) => {
 
 <Layout title={title}>
   <h1 class="flex items-center gap-5 mb-4">
-    <img src="/favicon.svg" alt={title} class="w-10 h-10" />
+    <img src={asset("/favicon.svg")} alt={title} class="w-10 h-10" />
     {title}
   </h1>
   <p>

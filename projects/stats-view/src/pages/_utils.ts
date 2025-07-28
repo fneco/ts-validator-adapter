@@ -23,3 +23,12 @@ export function getFilePreview(
     return `Error reading ${filename}`;
   }
 }
+
+// Helper for creating proper paths with base URL
+export const asset = (path: string) => {
+  const baseUrl = import.meta.env.BASE_URL || "/";
+  const cleanPath = path.replace(/^\//, "");
+  return baseUrl.endsWith("/")
+    ? baseUrl + cleanPath
+    : baseUrl + "/" + cleanPath;
+};
