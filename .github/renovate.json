@@ -1,0 +1,195 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "config:recommended",
+    ":maintainLockFilesWeekly"
+  ],
+  "schedule": [
+    "before 6am on friday"
+  ],
+  "timezone": "Asia/Tokyo",
+  "assignees": [
+    "fneco"
+  ],
+  "reviewers": [
+    "fneco"
+  ],
+  "commitMessagePrefix": "chore(deps): ",
+  "semanticCommits": "enabled",
+  "prConcurrentLimit": 20,
+  "prHourlyLimit": 5,
+  "automerge": true,
+  "platformAutomerge": true,
+  "automergeType": "pr",
+  "automergeStrategy": "squash",
+  "major": {
+    "automerge": false,
+    "addLabels": [
+      "major-update",
+      "requires-manual-review"
+    ]
+  },
+  "minor": {
+    "automerge": true,
+    "addLabels": [
+      "minor-update"
+    ]
+  },
+  "patch": {
+    "automerge": true,
+    "addLabels": [
+      "patch-update"
+    ]
+  },
+  "packageRules": [
+    {
+      "description": "Group root workspace dependencies",
+      "matchFileNames": [
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "groupName": "root-workspace",
+      "prPriority": 10
+    },
+    {
+      "description": "Group all packages dependencies",
+      "matchFileNames": [
+        "packages/**"
+      ],
+      "groupName": "packages-dependencies",
+      "prPriority": 9
+    },
+    {
+      "description": "Group demo project dependencies",
+      "matchFileNames": [
+        "projects/demo-with-vite/**"
+      ],
+      "groupName": "demo-vite-dependencies",
+      "prPriority": 6
+    },
+    {
+      "description": "Group stats-view project dependencies",
+      "matchFileNames": [
+        "projects/stats-view/**"
+      ],
+      "groupName": "stats-view-dependencies",
+      "prPriority": 5
+    },
+    {
+      "description": "GitHub Actions updates",
+      "matchManagers": [
+        "github-actions"
+      ],
+      "groupName": "github-actions",
+      "prPriority": 4,
+      "automerge": true,
+      "addLabels": [
+        "github-actions"
+      ]
+    },
+    {
+      "description": "TypeScript related packages - careful with major updates",
+      "matchPackageNames": [
+        "typescript",
+        "@types/**",
+        "ts-node",
+        "tsx",
+        "tsup"
+      ],
+      "groupName": "typescript-ecosystem"
+    },
+    {
+      "description": "Validation library updates - requires careful review",
+      "matchPackageNames": [
+        "ajv",
+        "arktype",
+        "@sinclair/typebox",
+        "valibot",
+        "zod",
+        "zod-mini"
+      ],
+      "groupName": "validation-libraries",
+      "major": {
+        "automerge": false,
+        "addLabels": [
+          "validation-library",
+          "breaking-change-potential"
+        ]
+      }
+    },
+    {
+      "description": "Test framework updates",
+      "matchPackageNames": [
+        "vitest",
+        "@vitest/**",
+        "jest",
+        "@jest/**"
+      ],
+      "groupName": "test-frameworks",
+      "minor": {
+        "automerge": true
+      }
+    },
+    {
+      "description": "Build tools and bundlers",
+      "matchPackageNames": [
+        "vite",
+        "@vitejs/**",
+        "astro",
+        "@astrojs/**",
+        "tailwindcss"
+      ],
+      "groupName": "build-tools",
+      "major": {
+        "automerge": false,
+        "addLabels": [
+          "build-tools",
+          "test-build-process"
+        ]
+      }
+    },
+    {
+      "description": "Pin digest updates",
+      "matchUpdateTypes": [
+        "pin",
+        "digest"
+      ],
+      "automerge": true,
+      "addLabels": [
+        "pin-digest"
+      ]
+    },
+    {
+      "description": "Exclude private @fneco packages",
+      "matchPackageNames": [
+        "@fneco/*"
+      ],
+      "enabled": false
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "addLabels": [
+      "security"
+    ],
+    "prPriority": 100,
+    "automerge": false
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "schedule": [
+      "before 6am on friday"
+    ],
+    "addLabels": [
+      "lockfile-maintenance"
+    ]
+  },
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/generated/**"
+  ]
+}
