@@ -29,7 +29,8 @@ runs:
     - name: Set up .npmrc for GitHub Packages
       shell: bash
       run: |
-        echo "//npm.pkg.github.com/:_authToken=${{ env.GH_PACKAGES_PAT }}" > ~/.npmrc
+        echo "//npm.pkg.github.com/:_authToken=${{ env.GH_PACKAGES_PAT }}" \
+          > ~/.npmrc
         echo "@fneco:registry=https://npm.pkg.github.com" >> ~/.npmrc
 
     - name: Install dependencies

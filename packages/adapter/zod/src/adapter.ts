@@ -1,10 +1,19 @@
-import { type Writeable } from "zod";
 import { z } from "zod/v4";
-import { $ZodType, type $ZodLooseShape } from "zod/v4/core";
+import {
+  $ZodType,
+  type $strip,
+  type $ZodLooseShape,
+  type SomeType,
+} from "zod/v4/core";
+
+// Define Writeable utility type locally since it's not exported from zod v4
+type Writeable<T> = {
+  -readonly [P in keyof T]: T[P];
+} & {};
 
 export function adapt<
-  T extends $ZodLooseShape = Partial<Record<never, $ZodType>>
->(schema: z.ZodObject<Writeable<T> & {}>) {
+  T extends $ZodLooseShape = Partial<Record<never, SomeType>>
+>(schema: z.ZodObject<Writeable<T>, $strip>) {
   return (input: unknown) => {
     const result = schema.safeParse(input);
     if (result.success) {
